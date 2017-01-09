@@ -1,45 +1,47 @@
 def gameboard(list_x_o = None,win = None):
     """ This function prints out the gameboard."""
-
-
     if list_x_o == None:
         list_x_o = [[" "," "," "],[" "," "," "],[" "," "," "]]
-    print list_x_o
-    print
-    print
-    print "Column    0          1          2          "
-    print "               |          |               "
-    print "Row 0    %s     |     %s    |     %s          " % (list_x_o[0][0],list_x_o[0][1],list_x_o[0][2])
-    print "               |          |               " 
-    print "       _____________________________"
-    print "               |          |              "
-    print "Row 1    %s     |     %s    |     %s          " % (list_x_o[1][0],list_x_o[1][1],list_x_o[1][2])
-    print "               |          |               " 
-    print "       _____________________________"
-    print "               |          |               "   
-    print "Row 2    %s     |     %s    |     %s         " % (list_x_o[2][0],list_x_o[2][1],list_x_o[2][2])  
-    print "               |          |               "      
 
-    if win == True:
-        start()
-    elif win == False:
+    vertical_divide =  "               |          |               "
+    horizontal_divide =  "       _____________________________"
+      
+    print '/n' * 5
+    print "Column    0          1          2          "
+    print vertical_divide
+    print "Row 0    %s     |     %s    |     %s          " % (list_x_o[0][0],list_x_o[0][1],list_x_o[0][2])
+    print vertical_divide
+    print horizontal_divide
+    print vertical_divide                      
+    print "Row 1    %s     |     %s    |     %s          " % (list_x_o[1][0],list_x_o[1][1],list_x_o[1][2])
+    print vertical_divide
+    print horizontal_divide
+    print vertical_divide
+    print "Row 2    %s     |     %s    |     %s         " % (list_x_o[2][0],list_x_o[2][1],list_x_o[2][2])  
+    print vertical_divide  
+
+    if win == True or win == False:
         start()
     else:
         new_value(list_x_o)
 
+
 def new_value(list_x_o):
     """ This function asks the player which number they are and where they want to put their mark."""
-
-
-    player_num = raw_input("Are you Player 1 or Player 2? (1/2) ")
+    player_num = raw_input("Are you Player #1 or Player #2? (1/2) ")
+    if player_num not in ['1','2']:
+        print "You are Player #1 or Player #2, please enter a 1 or 2 when asked your player number. "
+        new_value(list_x_o)
     player_num = int(player_num)
     new_piece = raw_input("Where would you like to place your mark? (Row,Column) ")
+    if "," not in new_piece:
+        print "Please write in the coordinates of your mark separted by a comma."
+        new_value(list_x_o)
     new_piece = new_piece.split(",")
     row = int(new_piece[0])
     column = int(new_piece[1])
     print new_piece
     place = list_x_o[row][column]
-
 
     if place == " ":
         mark(list_x_o,row,column,player_num)
@@ -50,23 +52,16 @@ def new_value(list_x_o):
 
 def mark(list_x_o,row,column,player_num):
     """This function puts the mark on the tic tac toe board"""
-
-
     if player_num == 1:
         list_x_o[row][column] = "X"
     elif player_num == 2:
         list_x_o[row][column] = "O"
 
-    winner_check(list_x_o,player_num)
+    winner_check(list_x_o,player_num)  
 
 
-
-    
 def winner_check(list_x_o,player_num):
     """ This function checks to see if there is a winner or the  board is full"""
-
-
-
     print "checking for winner"
     if player_num == 1:
         mark = "X"
@@ -100,10 +95,12 @@ def winner_check(list_x_o,player_num):
     else:
         gameboard(list_x_o)
 
+
 def start():
     play = True
     while play:
         game_play = raw_input("Would you like to play tic tac toe (y/n)? ")
+        game_play = game_play.lower()
         if game_play == "y":
             play = True
             gameboard()
