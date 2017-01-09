@@ -1,11 +1,9 @@
-def gameboard(list_x_o = None,win = None):
+def gameboard(list_x_o=None, win=None):
     """ This function prints out the gameboard."""
-    if list_x_o == None:
-        list_x_o = [[" "," "," "],[" "," "," "],[" "," "," "]]
-
-    vertical_divide =  "               |          |               "
-    horizontal_divide =  "       _____________________________"
-      
+    if list_x_o is None:
+        list_x_o = [["","",""],["","",""],["","",""]
+    vertical_divide = "               |          |               "
+    horizontal_divide = "       _____________________________"      
     print '/n' * 5
     print "Column    0          1          2          "
     print vertical_divide
@@ -89,7 +87,7 @@ def winner_check(list_x_o,player_num):
     if condition == True:
         print "YOU WON!!!!!"
         gameboard(list_x_o,True)
-    elif " " not in list_x_o[0] and " " not in list_x_o[1] and " " not in list_x_o[2]:
+    elif "" not in list_x_o[0] and "" not in list_x_o[1] and "" not in list_x_o[2]:
         print "No winners here"
         gameboard(list_x_o,False)
     else:
@@ -112,6 +110,6 @@ if __name__ == "__main__":
     start()
 
 
-           
+         
 
          
