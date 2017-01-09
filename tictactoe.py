@@ -1,21 +1,21 @@
 def gameboard(list_x_o=None, win=None):
     """ This function prints out the gameboard."""
     if list_x_o is None:
-        list_x_o = [["","",""],["","",""],["","",""]
+        list_x_o = [["","",""],["","",""],["","",""]]
     vertical_divide = "               |          |               "
     horizontal_divide = "       _____________________________"      
     print '/n' * 5
     print "Column    0          1          2          "
     print vertical_divide
-    print "Row 0    %s     |     %s    |     %s          " % (list_x_o[0][0],list_x_o[0][1],list_x_o[0][2])
+    print "Row 0     %s     |     %s     |     %s          " % (list_x_o[0][0],list_x_o[0][1],list_x_o[0][2])
     print vertical_divide
     print horizontal_divide
     print vertical_divide                      
-    print "Row 1    %s     |     %s    |     %s          " % (list_x_o[1][0],list_x_o[1][1],list_x_o[1][2])
+    print "Row 1     %s     |     %s     |     %s          " % (list_x_o[1][0],list_x_o[1][1],list_x_o[1][2])
     print vertical_divide
     print horizontal_divide
     print vertical_divide
-    print "Row 2    %s     |     %s    |     %s         " % (list_x_o[2][0],list_x_o[2][1],list_x_o[2][2])  
+    print "Row 2     %s     |     %s     |     %s         " % (list_x_o[2][0],list_x_o[2][1],list_x_o[2][2])  
     print vertical_divide  
 
     if win == True or win == False:
@@ -41,7 +41,7 @@ def new_value(list_x_o):
     print new_piece
     place = list_x_o[row][column]
 
-    if place == " ":
+    if place == "":
         mark(list_x_o,row,column,player_num)
     else:
         print "That space is already taken. Please pick another space for your mark. "
